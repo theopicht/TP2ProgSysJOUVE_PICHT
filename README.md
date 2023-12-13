@@ -25,3 +25,7 @@ On créer la liaison entre le client et le serveur (socket) selon les informatio
 
 Bien entendu, on teste la valeur de retour de la fonction (-1 si erreurs) et on renvoie une erreur si besoin.  
 
+---
+## Question 4
+
+
