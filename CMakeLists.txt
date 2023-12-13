@@ -6,4 +6,6 @@ set(CMAKE_C_STANDARD 11)
 include_directories(.)
 
 add_executable(TP2ProgSysJOUVE_PICHT
-        main.c)
+        main.c
+        puttftp.c
+        gettftp.c)
