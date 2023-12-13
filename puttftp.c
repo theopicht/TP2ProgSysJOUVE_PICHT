@@ -22,8 +22,9 @@ int main(int argc, char *argv[]) {
 
     // Setup hints for getaddrinfo
     memset(&hints, 0, sizeof hints);
-    hints.ai_family = AF_UNSPEC; // AF_INET or AF_INET6 to force version
-    hints.ai_socktype = SOCK_DGRAM; // UDP - TFTP is over UDP
+    hints.ai_family = AF_INET; // AF_INET si to force IPV4 version
+    hints.ai_socktype = SOCK_DGRAM; // TFTP is over UDP
+    hints.ai_protocol= 0;
 
     // Get server address info
     if (getaddrinfo(server, PORT_NUMBER, &hints, &res) != 0) { // getaddrinfo error handler
