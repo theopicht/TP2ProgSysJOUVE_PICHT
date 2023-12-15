@@ -34,6 +34,16 @@ Bien entendu, on teste la valeur de retour de la fonction (-1 si erreurs) et on 
 ---
 ## Question 4
 
+On cherche donc à créeer la requête en lecture (RRQ) et à l'envoyer au serveur. Pour cela, on sait que le RRQ à créer respecte le format ci dessous (récupéré dans la RFC 1350).  
 
+<img width="506" alt="Capture d’écran 2023-12-15 à 19 21 44" src="https://github.com/theopicht/TP2ProgSysJOUVE_PICHT/assets/151057454/861cfef1-1f60-48ce-9ca0-6c7630c346c1">  
+
+Ici, l'opcode correspond à 1, puisque l'on souhaite adresser une RRQ. Le 1er string correspond au nom du fichier à lire sur le serveur et le 2ème correspond au mode, ici le mode "octet" qui permet d'envoyer caractères et images.  
+On utilise alors la fonction memcpy qui permet de copier l'espace mémoire souhaité, ainsi que strcpy qui permet de copier le contenu du tableau dans le paquet RRQ. On initialise aussi une variable contenant la longueur du RRQ.  
+Pour envoyer le message, on utilise sendto() (avec implémentation du ERROR_HANDLER).  
+
+Pour la réception du message, on créer une structure permettant la réception du message. Après avoir alloué la mémoire nécessaire et créer un HANDLER pour s'assurer que le fichier est bien recu, on recoit les bits du fichier à l'aide de la fonction recvfrom. Cette fonction prend en argument le socket, son buffer (soit le nombre de bits à recevoir à chaque appel), sa taille et la structure pour stocker le retour. Cette fonction renvoie la longueur du message recu, on vérifie donc que ce nombre n'est pas nul. On lis ensuite le fichier block de 516 bits par block de 516 bits (512 bits pour les données + 4 pour le header), en les réécrivant dans un fichier local (qui sera donc une copie bit à bit du fichier recu, de la part du serveur).  
+
+Enfin, on envoie un dernier message au serveur pour confirmer la bonne réception du fichier (ACK)
 
 
