@@ -44,6 +44,6 @@ Pour envoyer le message, on utilise sendto() (avec implémentation du ERROR_HAND
 
 Pour la réception du message, on créer une structure permettant la réception du message. Après avoir alloué la mémoire nécessaire et créer un HANDLER pour s'assurer que le fichier est bien recu, on recoit les bits du fichier à l'aide de la fonction recvfrom. Cette fonction prend en argument le socket, son buffer (soit le nombre de bits à recevoir à chaque appel), sa taille et la structure pour stocker le retour. Cette fonction renvoie la longueur du message recu, on vérifie donc que ce nombre n'est pas nul. On lis ensuite le fichier block de 516 bits par block de 516 bits (512 bits pour les données + 4 pour le header), en les réécrivant dans un fichier local (qui sera donc une copie bit à bit du fichier recu, de la part du serveur).  
 
-Enfin, on envoie un dernier message au serveur pour confirmer la bonne réception du fichier (ACK)
+Enfin, on envoie un dernier message au serveur pour confirmer la bonne réception du fichier (ACK = n° ACK avant + 1) à l'aide sendto().
 
 
