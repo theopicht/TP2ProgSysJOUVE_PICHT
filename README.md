@@ -57,7 +57,8 @@ Après appel à la fonction gettftp, on observe bien les 3 échanges de données
 
 En effectuant la même oppération avec un fichier plus lourd (ici 48.4MB), on parvient aussi à copier le fichier.  
 
-![Image PNG](https://github.com/theopicht/TP2ProgSysJOUVE_PICHT/assets/151057454/694fc2a0-784a-40cf-a4c2-ba68a2ad0d04)  
+![Image PNG](https://github.com/theopicht/TP2ProgSysJOUVE_PICHT/assets/151057454/636be7a3-dca0-4fe2-85ef-37f19a381127)
+
 
 ![Image PNG](https://github.com/theopicht/TP2ProgSysJOUVE_PICHT/assets/151057454/8cc39a13-7f45-4bf4-87ff-9f53798f3942)  
 
@@ -66,6 +67,7 @@ WireShark nous montre bien la transmission de plusieurs blocs.
 
 ---
 ## Question 5
+
 
 
 
