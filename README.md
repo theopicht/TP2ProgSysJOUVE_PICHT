@@ -42,8 +42,22 @@ Ici, l'opcode correspond à 1, puisque l'on souhaite adresser une RRQ. Le 1er st
 On utilise alors la fonction memcpy qui permet de copier l'espace mémoire souhaité, ainsi que strcpy qui permet de copier le contenu du tableau dans le paquet RRQ. On initialise aussi une variable contenant la longueur du RRQ.  
 Pour envoyer le message, on utilise sendto() (avec implémentation du ERROR_HANDLER).  
 
-Pour la réception du message, on créer une structure permettant la réception du message. Après avoir alloué la mémoire nécessaire et créer un HANDLER pour s'assurer que le fichier est bien recu, on recoit les bits du fichier à l'aide de la fonction recvfrom. Cette fonction prend en argument le socket, son buffer (soit le nombre de bits à recevoir à chaque appel), sa taille et la structure pour stocker le retour. Cette fonction renvoie la longueur du message recu, on vérifie donc que ce nombre n'est pas nul. On lis ensuite le fichier block de 516 bits par block de 516 bits (512 bits pour les données + 4 pour le header), en les réécrivant dans un fichier local (qui sera donc une copie bit à bit du fichier recu, de la part du serveur).  
+Pour la réception du message, on créer une structure. Après avoir alloué la mémoire nécessaire et créer un HANDLER pour s'assurer que le fichier est bien recu, on recoit les bits du fichier à l'aide de la fonction recvfrom. Cette fonction prend en argument le socket, son buffer (soit le nombre de bits à recevoir à chaque appel), sa taille et la structure pour stocker le retour. Cette fonction renvoie la longueur du message recu, on vérifie donc que ce nombre n'est pas nul. Puis, à l'aide de "buffer[BUFFER_OFFSET] << 8", on fait un décalage de 8 bit puis un "OU" pour transformer les 2 octets de base en un entier de 16 bit en respectant la considération LSB. On lis ensuite le fichier block de 516 octets par block de 516 octets (512 octets pour les données + 4 pour le header), en les réécrivant dans un fichier local (qui sera donc une copie bit à bit du fichier recu, de la part du serveur).  
 
 Enfin, on envoie un dernier message au serveur pour confirmer la bonne réception du fichier (ACK = n° ACK avant + 1) à l'aide sendto().
 
+Résultats :  
+
+On utilise un logiciel permettant de téléverser un fichier sur notre serveur. Ici seulement un fichier de 59 octets.  
+
+![Capture d’écran 2023-12-13 à 16 28 29](https://github.com/theopicht/TP2ProgSysJOUVE_PICHT/assets/151057454/38427851-aeff-49bc-a4c5-e8f8660aad29)
+
+Après appel à la fonction gettftp, on observe bien les 3 échanges de données sur WireShark (requête RRQ, lecture fichier, messagee ACK). Le fichier est bien copié sur notre répertoire local courant.  
+
+
+En effectuant la même oppération avec un fichier plus lourd (ici 48.4MB), on parvient aussi à copier le fichier.  
+![Uploading Image PNG.jpeg…]()  
+
+
+![Uploading Image PNG.jpeg…]()
 
