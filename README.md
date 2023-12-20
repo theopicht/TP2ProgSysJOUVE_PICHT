@@ -68,6 +68,14 @@ WireShark nous montre bien la transmission de plusieurs blocs.
 ---
 ## Question 5
 
+On reprend la même logique qu'à la question 4, à la différence près que l'OPcode est à 2 pour une requête WRQ.  
+Cependant, en exécutant la fonction, on se rend compte que la connection au serveur distant est bien réalisée, mais que le transfert de fichier n'aboutit pas. Cela eest certaineement dû au logiciel permettant de créer le serveur TFTP ("Transfer") qui nécéssite obligatoirement un login pour de l'écriture de fichier (fonctionnalité non désactivable).  
 
+<ins>Résultats </ins> :   
 
+![Capture d’écran 2023-12-20 à 17 15 47](https://github.com/theopicht/TP2ProgSysJOUVE_PICHT/assets/151057454/4f168220-e95b-4152-905f-aa4fe84202e0)  
+
+![Capture d’écran 2023-12-20 à 17 16 09](https://github.com/theopicht/TP2ProgSysJOUVE_PICHT/assets/151057454/b20d0979-7427-40bd-b03c-98f08af78a35)  
+
+Le détection du fichier à bien lieu, mais le transfert n'a pas lieu.
 
