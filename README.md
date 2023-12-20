@@ -46,7 +46,7 @@ Pour la réception du message, on créer une structure. Après avoir alloué la 
 
 Enfin, on envoie un dernier message au serveur pour confirmer la bonne réception du fichier (ACK = n° ACK avant + 1) à l'aide sendto().
 
-Résultats :  
+<ins>Résultats </ins> :    
 
 On utilise un logiciel permettant de téléverser un fichier sur notre serveur. Ici seulement un fichier de 59 octets.  
 
@@ -56,8 +56,16 @@ Après appel à la fonction gettftp, on observe bien les 3 échanges de données
 
 
 En effectuant la même oppération avec un fichier plus lourd (ici 48.4MB), on parvient aussi à copier le fichier.  
-![Uploading Image PNG.jpeg…]()  
+
+![Image PNG](https://github.com/theopicht/TP2ProgSysJOUVE_PICHT/assets/151057454/694fc2a0-784a-40cf-a4c2-ba68a2ad0d04)  
+
+![Image PNG](https://github.com/theopicht/TP2ProgSysJOUVE_PICHT/assets/151057454/8cc39a13-7f45-4bf4-87ff-9f53798f3942)  
+
+WireShark nous montre bien la transmission de plusieurs blocs.  
 
 
-![Uploading Image PNG.jpeg…]()
+---
+## Question 5
+
+
 
