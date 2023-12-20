@@ -98,15 +98,15 @@ int main(int argc, char *argv[]) {
             return 6;
         }
 
-        if (buffer[1] == TFTP_OPCODE_DATA) {
-            int received_block_num = (buffer[2] << 8) | buffer[3];
+        if (buffer[1] == TFTP_OPCODE_DATA) { // If TFTP data are sent 
+            int received_block_num = (buffer[BUFFER_OFFSET] << 8) | buffer[3];
             if (received_block_num == block_num + 1) {
                 fwrite(buffer + 4, 1, received_bytes - 4, received_file);
                 block_num++;
 
                 // Send ACK
-                buffer[1] = TFTP_OPCODE_ACK;
-                if (sendto(sockfd, buffer, 4, 0, (struct sockaddr *)&from_addr, from_len) < 0) {
+                buffer[1] = TFTP_OPCODE_ACK; // Assignation of ACK OPCODE
+                if (sendto(sockfd, buffer, 4, 0, (struct sockaddr *)&from_addr, from_len) < 0) { // All error code are below 0 value
                     perror("sendto");
                     fclose(received_file);
                     close(sockfd);
